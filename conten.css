@@ -364,16 +364,21 @@ body {
   background: #111116;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
+  display: block;
+  text-align: center;
+  padding: 10px;
   overflow: hidden;
+}
+
+.ad-slot iframe {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
 }
 
 .ad-slot--300x250 {
   width: 324px;
-  min-height: 274px;
+  min-height: 272px;
 }
 
 .ad-slot__label {
@@ -390,26 +395,31 @@ body {
   text-align: center;
 }
 
-/* Tablet / Mobile fallback */
-@media (max-width: 860px) {
+/* Tablet / Mobile fallback: keep 300x250 visible below player instead of hiding it */
+@media (max-width: 740px) {
   body {
-    padding: 0;
+    padding: 0 0 18px;
   }
 
   .desktop-stage {
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
 
   .app__videos {
-    height: 100vh;
+    height: 82vh;
     width: 100%;
     max-width: 100%;
     border-radius: 0;
   }
 
-  .desktop-sidebar,
-  .site-footer {
-    display: none;
+  .desktop-sidebar {
+    width: 100%;
+    max-width: 340px;
+    padding: 0 8px;
+  }
+
+  .ad-slot--300x250 {
+    width: 100%;
   }
 }
