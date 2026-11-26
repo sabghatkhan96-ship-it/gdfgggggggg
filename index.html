@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="rating" content="adult">
+    <meta name="RATING" content="RTA-5042-1996-1400-1577-RTA">
+    <meta name="description" content="18+ Free Live Cams & Interactive Video Streams">
+    <title>FREE LIVE CAMS (18+)</title>
+    <link rel="icon" href="img/favicon-16x16.png">
+    <link rel="preconnect" href="https://assets-global.website-files.com" crossorigin>
+    <link rel="preconnect" href="https://s3.amazonaws.com" crossorigin>
+    <link rel="dns-prefetch" href="https://assets-global.website-files.com">
+    <link rel="dns-prefetch" href="https://s3.amazonaws.com">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FREE LIVE CAMS">
+    <meta property="og:image" content="https://pbs.twimg.com/media/GHRZR5SW4AAmPnX?format=jpg&name=large">
+    <link rel="stylesheet" href="conten.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <main class="desktop-stage">
+        <!-- Main Vertical Cam Player -->
+        <section class="app__videos" aria-label="Live Cam Stream">
+            <div class="video">
+                <!-- Top-left LIVE badge -->
+                <svg class="svg-overlay" width="137" height="48" viewBox="0 0 137 48" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" aria-label="Live">
+                    <g id="Botom live">
+                        <g id="Group 4">
+                            <path id="ROJO"
+                                d="M41.5151 0H113.129C126.312 0 137 10.6875 137 23.8712C137 37.055 126.312 47.7424 113.129 47.7424H41.5151V0Z"
+                                fill="#FF1010" />
+                        </g>
+                        <g id="Group 3">
+                            <path id="blanco"
+                                d="M41.5152 0H23.8712C10.6875 0 0 10.6875 0 23.8712C0 37.055 10.6875 47.7424 23.8712 47.7424H41.5152V0Z"
+                                fill="white" />
+                        </g>
+                        <g id="Group 2">
+                            <path id="LIVE"
+                                d="M69.7164 32.7418V35.2879H57.9105V32.7418H69.7164ZM58.5268 11.6761V35.2879H55.397V11.6761H58.5268ZM76.6573 11.6761V35.2879H73.5275V11.6761H76.6573ZM89.9714 31.7039L96.9283 11.6761H100.318L91.5768 35.2879H89.1604L89.9714 31.7039ZM83.4683 11.6761L90.3604 31.7039L91.22 35.2879H88.8036L80.079 11.6761H83.4683ZM118.497 32.7418V35.2879H105.994V32.7418H118.497ZM106.626 11.6761V35.2879H103.496V11.6761H106.626ZM116.843 21.8278V24.374H105.994V21.8278H116.843ZM118.335 11.6761V14.2384H105.994V11.6761H118.335Z"
+                                fill="white" />
+                        </g>
+                        <g id="bola roja">
+                            <path id="BOLAROJA"
+                                d="M23.8712 33.2121C29.03 33.2121 33.2121 29.4947 33.2121 24.9091C33.2121 20.3235 29.03 16.6061 23.8712 16.6061C18.7123 16.6061 14.5303 20.3235 14.5303 24.9091C14.5303 29.4947 18.7123 33.2121 23.8712 33.2121Z"
+                                fill="#FF0000" />
+                        </g>
+                    </g>
+                </svg>
+
+                <!-- 18+ Adult Badge -->
+                <span class="age-badge">18+</span>
+
+                <!-- Dual video players for instant zero-wait switching -->
+                <video id="videoA" class="video__player is-active" autoplay muted loop playsinline preload="auto"></video>
+                <video id="videoB" class="video__player" muted loop playsinline preload="auto"></video>
+
+                <!-- Buffering indicator (hidden as soon as video frames are ready) -->
+                <div id="videoSpinner" class="video-spinner" aria-hidden="true"></div>
+
+                <!-- Non-blocking Tap-to-Chat CTA banner (does not hijack whole screen) -->
+                <a class="tap-cta"
+                    href="https://bgklvq.yourllove.net/?utm_source=da57dc555e50572d&s1=194408&s2=1977755&s3=vercel&s5=26-02&click_id=twitter&ban=twitter&j1=1"
+                    target="_blank" rel="noopener noreferrer">
+                    <img src="img/Tap to chat marco.svg" alt="Tap to chat">
+                </a>
+
+                <!-- Sidebar Controls -->
+                <div class="videoSidebar">
+                    <div class="videoSidebar__button">
+                        <span class="loader"></span>
+                        <h3>LIVE</h3>
+                    </div>
+
+                    <div class="videoSidebar__button" id="likeBtn" role="button" tabindex="0" aria-label="Like">
+                        <span class="material-icons">favorite_border</span>
+                        <p id="likeCount">4.3K</p>
+                    </div>
+
+                    <div class="videoSidebar__button">
+                        <span class="material-icons">message</span>
+                        <p>712</p>
+                    </div>
+
+                    <div class="videoSidebar__button" id="shareBtn" role="button" tabindex="0" aria-label="Share">
+                        <span class="material-icons">share</span>
+                        <p>68</p>
+                    </div>
+                </div>
+
+                <!-- Footer Controls -->
+                <div class="videoFooter">
+                    <div class="videoFooter__text">
+                        <h3 id="randomName"></h3>
+                        <p class="videoFooter__description" id="randomText"></p>
+                        <div class="videoFooter__ticker">
+                            <ul class="boddbtno">
+                                <li>
+                                    <button type="button" class="downloadbtno" onclick="nextStream();">NEXT</button>
+                                </li>
+                                <li>
+                                    <a class="downloadbtno downloadbtno--live"
+                                        href="https://bgklvq.yourllove.net/?utm_source=da57dc555e50572d&s1=194408&s2=1977755&s3=vercel&s5=26-02&click_id=twitter&ban=twitter&j1=1"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <span class="loader" style="margin-right: 6px"></span>
+                                        <span class="material-icons btn-icon" aria-hidden="true">videocam</span>
+                                        LIVE SEX
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desktop Companion Sidebar (High-CPM 300x250 / Native Banner Slot) -->
+        <aside class="desktop-sidebar" aria-label="Sponsored">
+            <div class="adult-notice">
+                <span class="adult-notice__pill">18+ ADULTS ONLY</span>
+                <p>Live interactive cam previews. Viewer discretion advised.</p>
+            </div>
+
+            <!-- =========================================================
+                 ADSTERRA SLOT #3: 300x250 BANNER (OR NATIVE BANNER)
+                 Paste your Adsterra 300x250 Invoke script inside this div
+                 ========================================================= -->
+            <div class="ad-slot ad-slot--300x250" id="adsterra-300x250">
+                <span class="ad-slot__label">ADSTERRA 300×250 / NATIVE SLOT</span>
+                <!-- PASTE ADSTERRA 300x250 CODE HERE -->
+            </div>
+        </aside>
+    </main>
+
+    <footer class="site-footer">
+        <p>18+ Only &bull; All models &amp; performers are 18 years of age or older.</p>
+    </footer>
+
+    <script src="molde.js"></script>
+
+    <!-- =========================================================
+         ADSTERRA SLOT #1: POPUNDER SCRIPT (HIGHEST CPM)
+         Paste your Adsterra Popunder <script> tag right below
+         ========================================================= -->
+    <!-- PASTE ADSTERRA POPUNDER SCRIPT HERE -->
+
+    <!-- =========================================================
+         ADSTERRA SLOT #2: SOCIAL BAR SCRIPT (HIGH CTR + CPM)
+         Paste your Adsterra Social Bar <script> tag right below
+         ========================================================= -->
+    <!-- PASTE ADSTERRA SOCIAL BAR SCRIPT HERE -->
+</body>
+
+</html>
