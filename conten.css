@@ -362,7 +362,7 @@ body {
 
 .ad-slot {
   background: #111116;
-  border: 1px dashed rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 14px;
   display: flex;
   align-items: center;
