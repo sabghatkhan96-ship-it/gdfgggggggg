@@ -5,6 +5,8 @@ const nameElement = document.getElementById('randomName');
 const textElement = document.getElementById('randomText');
 const likeBtn = document.getElementById('likeBtn');
 const likeCount = document.getElementById('likeCount');
+const chatBtn = document.getElementById('chatBtn');
+const shareBtn = document.getElementById('shareBtn');
 
 // Fast, lightweight clips (<7.5 MB) for instant initial open & snappy swaps
 const fastVideoSources = [
@@ -122,7 +124,7 @@ function updateMetaText() {
 
 function preloadNext() {
     if (!standbyPlayer) return;
-    preloadedUrl = pickRandomUrl(allVideoSources, currentUrl);
+    preloadedUrl = pickRandomUrl(fastVideoSources, currentUrl);
     standbyPlayer.src = preloadedUrl;
     standbyPlayer.load();
 }
@@ -237,6 +239,31 @@ window.addEventListener('DOMContentLoaded', () => {
             const icon = likeBtn.querySelector('.material-icons');
             if (icon) icon.textContent = liked ? 'favorite' : 'favorite_border';
             likeCount.textContent = liked ? '4.4K' : '4.3K';
+        });
+    }
+
+    if (chatBtn) {
+        chatBtn.addEventListener('click', () => {
+            const liveLink = document.querySelector('.downloadbtno--live');
+            if (liveLink && liveLink.href) {
+                window.open(liveLink.href, '_blank', 'noopener,noreferrer');
+            }
+        });
+    }
+
+    if (shareBtn) {
+        shareBtn.addEventListener('click', () => {
+            const label = shareBtn.querySelector('p');
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href }).catch(() => {});
+            } else if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    if (label) {
+                        label.textContent = 'Copied';
+                        setTimeout(() => { label.textContent = '68'; }, 1500);
+                    }
+                }).catch(() => {});
+            }
         });
     }
 });
