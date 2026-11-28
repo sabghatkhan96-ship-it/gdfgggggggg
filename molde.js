@@ -97,6 +97,7 @@ let standbyPlayer = videoB;
 let currentUrl = '';
 let preloadedUrl = '';
 let stallTimer = null;
+let hasPreloadedForCurrent = false;
 const brokenUrls = new Set();
 
 function setSpinner(visible) {
@@ -133,6 +134,10 @@ function attachPlayerListeners(player) {
         if (player === activePlayer) {
             clearTimeout(stallTimer);
             setSpinner(false);
+            if (!hasPreloadedForCurrent) {
+                hasPreloadedForCurrent = true;
+                preloadNext();
+            }
         }
     });
 
@@ -141,6 +146,10 @@ function attachPlayerListeners(player) {
             clearTimeout(stallTimer);
             setSpinner(false);
             player.play().catch(() => {});
+            if (!hasPreloadedForCurrent) {
+                hasPreloadedForCurrent = true;
+                preloadNext();
+            }
         }
     });
 
@@ -163,19 +172,20 @@ function loadActiveStream(url) {
     if (!activePlayer) return;
     clearTimeout(stallTimer);
     currentUrl = url;
+    hasPreloadedForCurrent = false;
     setSpinner(true);
 
     activePlayer.src = url;
     activePlayer.load();
     activePlayer.play().catch(() => {});
 
-    // Auto-skip if a clip fails to buffer within 4.5s
+    // Auto-skip only if zero metadata/data arrived within 12s
     stallTimer = setTimeout(() => {
-        if (activePlayer && activePlayer.readyState < 2) {
+        if (activePlayer && activePlayer.readyState === 0) {
             brokenUrls.add(url);
             loadActiveStream(pickRandomUrl(fastVideoSources, url));
         }
-    }, 4500);
+    }, 12000);
 }
 
 function nextStream() {
@@ -196,6 +206,7 @@ function nextStream() {
         activePlayer = standbyPlayer;
         standbyPlayer = prevActive;
         currentUrl = preloadedUrl;
+        hasPreloadedForCurrent = true;
 
         activePlayer.play().catch(() => {});
         preloadNext();
@@ -205,7 +216,6 @@ function nextStream() {
     // Fallback if user clicks NEXT faster than background preload finished
     const fastUrl = pickRandomUrl(fastVideoSources, currentUrl);
     loadActiveStream(fastUrl);
-    preloadNext();
 }
 
 function recargarPagina() {
@@ -217,9 +227,9 @@ window.addEventListener('DOMContentLoaded', () => {
     attachPlayerListeners(videoB);
 
     updateMetaText();
-    // Always open with a lightweight <7.5MB clip for fastest initial start
+    // Load only active stream first so 100% bandwidth goes to instant playback;
+    // standby preloads right after active reaches canplay/playing.
     loadActiveStream(pickRandomUrl(fastVideoSources));
-    preloadNext();
 
     if (likeBtn && likeCount) {
         likeBtn.addEventListener('click', () => {
